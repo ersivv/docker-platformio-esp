@@ -2,7 +2,7 @@ FROM alpine
 MAINTAINER ersivv
 
 RUN apk update \
-	&& apk add -y python python-pip \
+	&& apk add python python-pip \
 	&& pip install --no-cache-dir platformio
 	
 RUN pip install -U platformio
@@ -15,6 +15,6 @@ RUN pio platform install espressif8266 --with-package framework-arduinoespressif
 	&& sed -i 's/~2/>=1/g' /root/.platformio/platforms/espressif32/platform.py \
 	&& cat /root/.platformio/platforms/espressif32/platform.py
 
-RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
 RUN pio --version	
