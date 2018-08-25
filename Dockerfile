@@ -15,9 +15,6 @@ RUN pio platform install espressif8266 --with-package framework-arduinoespressif
 	&& chmod 777 /root/.platformio/platforms/espressif32/platform.py \
 	&& sed -i 's/~2/>=1/g' /root/.platformio/platforms/espressif32/platform.py \
 	&& cat /root/.platformio/platforms/espressif32/platform.py
- 
-	&& apt-get -y remove python-pip \
-	&& apt-get -y autoremove \
 
 RUN apt-get -y remove python-pip \
 	&& apt-get -y autoremove \
