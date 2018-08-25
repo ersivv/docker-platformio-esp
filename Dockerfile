@@ -2,7 +2,7 @@ FROM alpine
 MAINTAINER ersivv
 
 RUN apk update \
-	&& apk add --no-cache --update python
+	&& apk add --no-cache --update python \
 	&& apk add --no-cache --update py-pip \
 	&& pip install --no-cache-dir platformio
 	
