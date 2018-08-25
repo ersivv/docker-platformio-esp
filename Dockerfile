@@ -1,8 +1,8 @@
 FROM alpine
 MAINTAINER ersivv
 
-RUN apt-get update \
-	&& apt-get install -y python python-pip \
+RUN apk update \
+	&& apk add -y python python-pip \
 	&& pip install --no-cache-dir platformio
 	
 RUN pip install -U platformio
@@ -15,9 +15,6 @@ RUN pio platform install espressif8266 --with-package framework-arduinoespressif
 	&& sed -i 's/~2/>=1/g' /root/.platformio/platforms/espressif32/platform.py \
 	&& cat /root/.platformio/platforms/espressif32/platform.py
 
-RUN apt-get -y remove python-pip \
-	&& apt-get -y autoremove \
-	&& apt-get clean \
-	&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 RUN pio --version	
