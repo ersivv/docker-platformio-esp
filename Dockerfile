@@ -1,9 +1,8 @@
 FROM debian
 MAINTAINER ersivv
 
-RUN apt-get update \
-	&& apt-get upgrade
-	&& apt-get install -y python python-pip\
+RUN apt-get update && apt-get upgrade \
+	&& apt-get install -y python python-pip \
 	&& pip install --upgrade pip \
 	&& pip install --no-cache-dir platformio
 
