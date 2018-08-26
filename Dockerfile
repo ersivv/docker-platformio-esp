@@ -1,4 +1,4 @@
-FROM image: python:2.7
+FROM image:python:2.7
 MAINTAINER ersivv
 
 RUN pip install --upgrade pip \
