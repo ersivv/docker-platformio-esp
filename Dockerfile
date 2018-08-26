@@ -1,9 +1,9 @@
-FROM alpine
+FROM debian
 MAINTAINER ersivv
 
-RUN apk update \
-	&& apk add --no-cache --update python \
-	&& apk add --no-cache --update py-pip \
+RUN apt-get update \
+	&& apt-get upgrade
+	&& apt-get install -y python python-pip\
 	&& pip install --upgrade pip \
 	&& pip install --no-cache-dir platformio
 
@@ -15,9 +15,7 @@ RUN pio platform install espressif8266 --with-package framework-arduinoespressif
 	&& sed -i 's/~2/>=1/g' /root/.platformio/platforms/espressif32/platform.py \
 	&& cat /root/.platformio/platforms/espressif32/platform.py
 
-ENV PATH /root/.platformio/packages/tool-esptool:/root/.platformio/packages/toolchain-xtensa/bin:$PATH	
-
-RUN rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
+RUN rm -rf /var/cache/apt/* /tmp/* /var/tmp/*
 
 RUN pio --version
 
