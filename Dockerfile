@@ -1,9 +1,7 @@
-FROM debian
+FROM image: python:2.7
 MAINTAINER ersivv
 
-RUN apt-get update && apt-get upgrade \
-	&& apt-get install -y python python-pip \
-	&& pip install --upgrade pip \
+RUN pip install --upgrade pip \
 	&& pip install --no-cache-dir platformio
 
 # ESP32 & ESP8266 Arduino Frameworks for Platformio
