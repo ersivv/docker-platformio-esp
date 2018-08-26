@@ -15,6 +15,8 @@ RUN pio platform install espressif8266 --with-package framework-arduinoespressif
 	&& chmod 777 /root/.platformio/platforms/espressif32/platform.py \
 	&& sed -i 's/~2/>=1/g' /root/.platformio/platforms/espressif32/platform.py \
 	&& cat /root/.platformio/platforms/espressif32/platform.py
+	
+RUN echo "export PATH=$PATH:/root/esp/xtensa-esp32-elf/bin" > ~/.profile	
 
 RUN rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
