@@ -16,10 +16,11 @@ RUN pio platform install espressif8266 --with-package framework-arduinoespressif
 	&& sed -i 's/~2/>=1/g' /root/.platformio/platforms/espressif32/platform.py \
 	&& cat /root/.platformio/platforms/espressif32/platform.py
 
-	
-RUN export PATH=$PATH:/root/esp/xtensa-esp32-elf/bin \
-	&& echo "export PATH=$PATH:/root/esp/xtensa-esp32-elf/bin" > ~/.profile	
+ENV PATH /root/esp/xtensa-esp32-elf/bin:$PATH	
 
 RUN rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
-RUN pio --version	
+RUN pio --version
+
+# Define default command.
+CMD ["sh"]	
